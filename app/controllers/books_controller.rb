@@ -7,7 +7,7 @@ class BooksController < ApplicationController
       @books = Book.all
     end
 
-    @books = @books.order(:title).page(params[:page]).per(100)
+    @books = @books.order(:title).page(params[:page]).per(30)
   end
 
   def show
