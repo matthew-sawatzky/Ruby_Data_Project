@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DataProject</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Lord of the Ruby</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
 
-  <body>
+<body>
+  <header>
+    <nav>
+      <%= link_to 'Home', root_path %> |
+      <%= link_to 'Books', books_path %> |
+      <%= link_to 'Authors', authors_path %> |
+      <%= link_to 'Publishers', publishers_path %> |
+      <%= link_to 'Categories', categories_path %> |
+      <%= link_to 'Reports', reports_path %> |
+      <%= link_to 'About', about_path %>
+    </nav>
+  </header>
+
+  <main>
     <%= yield %>
-  </body>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Lord of the Ruby</p>
+  </footer>
+</body>
 </html>
