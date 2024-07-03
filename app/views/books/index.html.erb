@@ -1,25 +1,13 @@
-<h1>Lord of the Ruby</h1>
+<h1>Books</h1>
 
-<%= form_with(url: books_path, method: :get, local: true) do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search books..." %>
+<%= form_with url: books_path, method: :get, local: true do %>
+  <%= label_tag :search, "Search for a book:" %>
+  <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search" %>
 <% end %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Publisher</th>
-    <th>Category</th>
-  </tr>
+<ul>
   <% @books.each do |book| %>
-    <tr>
-      <td><%= link_to book.title, book_path(book) %></td>
-      <td><%= book.author.name %></td>
-      <td><%= book.publisher.name %></td>
-      <td><%= book.category.name %></td>
-    </tr>
+    <li><%= link_to book.title, book_path(book) %></li>
   <% end %>
-</table>
-
-<%= paginate @books %>
+</ul>

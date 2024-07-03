@@ -1,13 +1,9 @@
 class BooksController < ApplicationController
   def index
-    if params[:search].present?
-      @books = Book.joins(:author, :publisher, :category)
-                   .where("books.title ILIKE ? OR authors.name ILIKE ? OR publishers.name ILIKE ? OR categories.name ILIKE ?", 
-                          "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
-                   .includes(:author, :publisher, :category)
-                   .page(params[:page])
+    if params[:search]
+      @books = Book.where("title LIKE ?", "%#{params[:search]}%")
     else
-      @books = Book.includes(:author, :publisher, :category).page(params[:page])
+      @books = Book.all
     end
   end
 
