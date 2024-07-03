@@ -1,4 +1,4 @@
-<h1>Books</h1>
+<h1>Lord of the Ruby</h1>
 
 <%= form_with url: books_path, method: :get, local: true do %>
   <%= label_tag :search, "Search for a book:" %>
@@ -11,3 +11,5 @@
     <li><%= link_to book.title, book_path(book) %></li>
   <% end %>
 </ul>
+
+<%= paginate @books %>
