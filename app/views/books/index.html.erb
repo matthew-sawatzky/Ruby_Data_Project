@@ -6,10 +6,14 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<ul>
-  <% @books.each do |book| %>
-    <li><%= link_to book.title, book_path(book) %></li>
-  <% end %>
-</ul>
+<% if @books.empty? %>
+  <p>No books available.</p>
+<% else %>
+  <ul>
+    <% @books.each do |book| %>
+      <li><%= link_to book.title, book_path(book) %></li>
+    <% end %>
+  </ul>
 
-<%= paginate @books %>
+  <%= paginate @books %>
+<% end %>
