@@ -1,4 +1,3 @@
-# app/controllers/books_controller.rb
 class BooksController < ApplicationController
   def index
     if params[:search]
